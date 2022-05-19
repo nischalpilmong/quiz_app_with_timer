@@ -47,22 +47,35 @@ function showQuestion(index){
    const option__list = document.querySelector('.option__list');
    let que__tag = `<span>${questions[index].num}. ${questions[index].question}</span>`;
    let option__tag = `
-                     <div class="option">
-                        <span>${questions[index].options[0]}</span>
-                     </div> 
-                     <div class="option">
-                        <span>${questions[index].options[1]}</span>
-                     </div> 
-                     <div class="option">
-                        <span>${questions[index].options[2]}</span>
-                     </div> 
-                     <div class="option">
-                        <span>${questions[index].options[3]}</span>
-                     </div> 
+                     <div class="option"><span>${questions[index].options[0]}</span></div> 
+                     <div class="option"><span>${questions[index].options[1]}</span></div>
+                     <div class="option"><span>${questions[index].options[2]}</span></div>
+                     <div class="option"><span>${questions[index].options[3]}</span></div>
                     `;
    que__text.innerHTML = que__tag;
    option__list.innerHTML = option__tag;
+   
+   const option = option__list.querySelectorAll('.option');
+   //console.log(option);
+   for(let i = 0; i < option.length; i++){
+      option[i].setAttribute("onclick", "optionSelected(this)");
+      //console.log(option[i]);
+   }
 }
+
+function optionSelected(answer){
+   let userAns = answer.textContent;
+   let correctAns = questions[que__count].answer;
+   
+   if(userAns == correctAns){
+       answer.classList.add('correct');
+       console.log('Answer is correct');
+   }else{
+       answer.classList.add('incorrect');
+       console.log('Answer is wrong');
+   }
+}
+
 
 function questionCounter(index){
    const bottom__question__counter = quiz__box.querySelector('.total__que');
