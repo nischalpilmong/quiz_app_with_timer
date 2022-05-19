@@ -34,13 +34,13 @@ const questions = [
         },
         {
             num: 4,
-            question: 'How can you make a numbered list?',
-            answer: '<ol>',
+            question: 'What does SQL stands for?',
+            answer: 'Structured Query Language',
             options: [
-                '<list>',
-                '<dl>',
-                '<ul>',
-                '<ol>'
+                "Store Query Language", 
+                "Strong Quest Language", 
+                "Structured Query Language", 
+                "Stream Query Language"
             ]
         },
         {
@@ -55,3 +55,5 @@ const questions = [
             ]
         }
 ];
+
+
