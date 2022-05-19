@@ -22,20 +22,25 @@ continue__btn.addEventListener('click', () => {
     quiz__box.classList.add('activeQuiz');
     //console.log(que__count);
     showQuestion(que__count);
+    questionCounter(num_ques);
 });
 
 let que__count = 0;
+let num_ques = 1;
 
 next__btn.addEventListener('click', function(){
    if(que__count < questions.length - 1){
       que__count++;
+      num_ques++;
       //console.log(que__count);
       showQuestion(que__count);
+      questionCounter(num_ques);
    }else{
       console.log('questions completed');
    } 
    
 });
+
 //getting questions and options from the array
 function showQuestion(index){
    const que__text = document.querySelector('.que__text');
@@ -57,6 +62,12 @@ function showQuestion(index){
                     `;
    que__text.innerHTML = que__tag;
    option__list.innerHTML = option__tag;
+}
+
+function questionCounter(index){
+   const bottom__question__counter = quiz__box.querySelector('.total__que');
+   let totalQuesCountTag = '<span><p>' + index + '</p>Of<p>' + questions.length + '</p>Questions';
+   bottom__question__counter.innerHTML = totalQuesCountTag;
 }
 
 
