@@ -261,6 +261,10 @@ section .option__list .option.incorrect{
     background: #f8d7da;
 }
 
+.option__list .option.disabled{
+  pointer-events: none;
+}
+
 .quiz__box footer{
     height: 60px;
     width: 100%;

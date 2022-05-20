@@ -5,6 +5,7 @@ const exit__btn = document.querySelector('.buttons .quit');
 const continue__btn = document.querySelector('.buttons .restart');
 const quiz__box = document.querySelector('.quiz__box');
 const next__btn = document.querySelector('.next__btn');
+const option__list = document.querySelector('.option__list');
 
 //If Start Quiz Button Is Clicked
 start__btn.addEventListener('click', () => {
@@ -73,6 +74,11 @@ function optionSelected(answer){
    }else{
        answer.classList.add('incorrect');
        console.log('Answer is wrong');
+   }
+
+   //once user select the option, all options should be disabled
+   for(let i = 0; i < option__list.children.length; i++){
+      option__list.children[i].classList.add('disabled');
    }
 }
 

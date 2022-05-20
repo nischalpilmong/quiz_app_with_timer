@@ -23,13 +23,13 @@ const questions = [
         },
         {
             num: 3,
-            question: 'How do you write "Hello World" in an alert box?',
-            answer: 'alert("Hello world")',
+            question: 'Who is the father of computer science?',
+            answer: 'Charles Babbage',
             options: [
-                'msgBox("Hello World")',
-                'alert("Hello World")',
-                'msg("Hello World")',
-                'alertBox("Hellp World")'
+                'Steve Jobs',
+                'Albert Einstein',
+                'Charles Babbage',
+                'Freddy Mercury'
             ]
         },
         {
