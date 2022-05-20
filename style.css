@@ -237,7 +237,7 @@ section .option__list .option:hover{
     pointer-events: none;
 }
 
-/* .option__list .option .icon.tick{
+.option__list .option .icon.tick{
     color: #23903c;
     border-color: #23903c;
     background: #d4edda;
@@ -247,7 +247,7 @@ section .option__list .option:hover{
     color: #a42834;
     border-color: #a42834;
     background: #f8d7da;
-} */
+}
 
 section .option__list .option.correct{
     color: #155724;
