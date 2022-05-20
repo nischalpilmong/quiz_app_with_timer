@@ -8,6 +8,8 @@ const next__btn = document.querySelector('.next__btn');
 const option__list = document.querySelector('.option__list');
 const timeCount = document.querySelector('.timer__sec');
 const timeLine = document.querySelector('header .time__line');
+const timeOff = document.querySelector('.timer .time__text');
+
 //If Start Quiz Button Is Clicked
 start__btn.addEventListener('click', () => {
    info__box.classList.add('activeInfo');
@@ -42,6 +44,29 @@ const result__box = document.querySelector('.result__box');
 const restart__quiz = result__box.querySelector('.buttons .restart');
 const quit__quiz = result__box.querySelector('.buttons .quit');
 
+restart__quiz.onclick = () => {
+      quiz__box.classList.add('activeQuiz');
+      result__box.classList.remove('activeResult');
+      
+      timeValue = 15;
+      que__count = 0;
+      num_ques = 1;
+      widthValue = 0;
+      userScore = 0;
+      showQuestion(que__count);
+      questionCounter(num_ques);
+      clearInterval(counter);
+      clearInterval(counterLine);
+      startTimer(timeValue);
+      startTimerLine(widthValue);
+      next__btn.style.display = 'none';
+      timeOff.textContent = 'Time Left';
+   }
+
+
+quit__quiz.onclick = () => {
+   window.location.reload();
+}
 
 //If Next button is clicked
 next__btn.addEventListener('click', function(){
@@ -55,12 +80,17 @@ next__btn.addEventListener('click', function(){
       startTimer(timeValue);
       clearInterval(counterLine);
       startTimerLine(widthValue);
+      next__btn.style.display = 'none';
+      timeOff.textContent = 'Time Left';
    }else{
+      clearInterval(counter);
+      clearInterval(counterLine);
+
       console.log('questions completed');
       showResultBox();
    } 
    
-   next__btn.style.display = 'none';
+  
 });
 
 //getting questions and options from the array
@@ -162,6 +192,20 @@ function startTimer(time){
         if(time < 0){
            clearInterval(counter);
            timeCount.textContent = '00';
+           let correctAns = questions[que__count].answer;
+            //if answer is incorrect, then automatically select the correct answer
+            for(let i = 0; i < option__list.children.length; i++){
+               if(option__list.children[i].textContent == correctAns){
+                     option__list.children[i].setAttribute('class', 'option correct');
+                     option__list.children[i].insertAdjacentHTML('beforeend', tickIcon);
+                  }
+               }
+            //once user select the option, all options should be disabled
+               for(let i = 0; i < option__list.children.length; i++){
+                  option__list.children[i].classList.add('disabled');
+               }
+           timeOff.textContent = 'Time Off';       
+           next__btn.style.display = 'block';
         }
      }
 }
