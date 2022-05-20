@@ -93,7 +93,7 @@ next__btn.addEventListener('click', function(){
   
 });
 
-//getting questions and options from the array
+//display questions and getting all options of each question from the array
 function showQuestion(index){
    const que__text = document.querySelector('.que__text');
    const option__list = document.querySelector('.option__list');
@@ -193,14 +193,14 @@ function startTimer(time){
            clearInterval(counter);
            timeCount.textContent = '00';
            let correctAns = questions[que__count].answer;
-            //if answer is incorrect, then automatically select the correct answer
+            //if timer stops to 0, then automatically select the correct answer
             for(let i = 0; i < option__list.children.length; i++){
                if(option__list.children[i].textContent == correctAns){
                      option__list.children[i].setAttribute('class', 'option correct');
                      option__list.children[i].insertAdjacentHTML('beforeend', tickIcon);
                   }
                }
-            //once user select the option, all options should be disabled
+            //once the timer stops and correct answer is automatially selected, all options should be disabled
                for(let i = 0; i < option__list.children.length; i++){
                   option__list.children[i].classList.add('disabled');
                }

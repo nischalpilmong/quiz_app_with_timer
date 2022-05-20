@@ -41,6 +41,8 @@ body{
     cursor: pointer;
 }
 
+/**Info Box section ***/
+
 .info__box{
     /* display: none; */
     width: 540px;
@@ -118,7 +120,19 @@ body{
     color: #fff;
 }
 
+/** Info Box ends here ***/
 
+
+.info__box.activeInfo,
+.quiz__box.activeQuiz,
+.result__box.activeResult{
+    z-index: 5;
+   opacity: 1;
+   pointer-events: auto;
+   transform: translate(-50%, -50%) scale(0.9);
+}
+
+/** Quiz Box here ***/
 .quiz__box{
     /* display: none; */
     width: 550px;
@@ -129,14 +143,7 @@ body{
     transform: translate(-50%, -50%) scale(0.9);
 }
 
-.info__box.activeInfo,
-.quiz__box.activeQuiz,
-.result__box.activeResult{
-    z-index: 5;
-   opacity: 1;
-   pointer-events: auto;
-   transform: translate(-50%, -50%) scale(0.9);
-}
+
 
 .quiz__box header{
     position: relative;
@@ -317,6 +324,8 @@ footer .next__btn:hover{
     background: #0263ca;
 }
 
+/**** Result Box starts here ******/
+
 .result__box{
     background-color: #fff;
     padding: 25px 30px;
@@ -371,3 +380,5 @@ footer .next__btn:hover{
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
+/*** Result Box ends here ******/
