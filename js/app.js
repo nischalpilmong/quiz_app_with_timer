@@ -35,6 +35,8 @@ let num_ques = 1;
 let counter;
 let counterLine;
 let widthValue = 0;
+let userScore = 0;
+
 
 const result__box = document.querySelector('.result__box');
 const restart__quiz = result__box.querySelector('.buttons .restart');
@@ -93,6 +95,8 @@ function optionSelected(answer){
    let correctAns = questions[que__count].answer;
    
    if(userAns == correctAns){
+       userScore += 1;
+       console.log(userScore);
        answer.classList.add('correct');
        console.log('Answer is correct');
        answer.insertAdjacentHTML('beforeend', tickIcon);
@@ -130,6 +134,20 @@ function showResultBox(){
    info__box.classList.remove('activeInfo');
    quiz__box.classList.remove('activeQuiz');
    result__box.classList.add('activeResult');
+   const score__text = document.querySelector('.score__text');
+   if(userScore > 3){
+      let scoreTag = '<span> and congrats!! You got <p>' + userScore + 
+              '</p> out of <p>' +  questions.length + '</p></span>';
+      score__text.innerHTML = scoreTag;        
+   } else if(userScore > 1){
+      let scoreTag = '<span> and nice!! You got only<p>' + userScore + 
+              '</p> out of <p>' +  questions.length + '</p></span>';
+      score__text.innerHTML = scoreTag; 
+   } else{
+      let scoreTag = '<span> and sorry!! You got only<p>' + userScore + 
+              '</p> out of <p>' +  questions.length + '</p></span>';
+      score__text.innerHTML = scoreTag; 
+   }
 }
 
 
