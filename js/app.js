@@ -36,6 +36,12 @@ let counter;
 let counterLine;
 let widthValue = 0;
 
+const result__box = document.querySelector('.result__box');
+const restart__quiz = result__box.querySelector('.buttons .restart');
+const quit__quiz = result__box.querySelector('.buttons .quit');
+
+
+//If Next button is clicked
 next__btn.addEventListener('click', function(){
    if(que__count < questions.length - 1){
       que__count++;
@@ -49,8 +55,10 @@ next__btn.addEventListener('click', function(){
       startTimerLine(widthValue);
    }else{
       console.log('questions completed');
+      showResultBox();
    } 
    
+   next__btn.style.display = 'none';
 });
 
 //getting questions and options from the array
@@ -106,6 +114,8 @@ function optionSelected(answer){
    for(let i = 0; i < option__list.children.length; i++){
       option__list.children[i].classList.add('disabled');
    }
+
+   next__btn.style.display = 'block';
 }
 
 
@@ -114,6 +124,14 @@ function questionCounter(index){
    let totalQuesCountTag = '<span><p>' + index + '</p>Of<p>' + questions.length + '</p>Questions';
    bottom__question__counter.innerHTML = totalQuesCountTag;
 }
+
+
+function showResultBox(){
+   info__box.classList.remove('activeInfo');
+   quiz__box.classList.remove('activeQuiz');
+   result__box.classList.add('activeResult');
+}
+
 
 function startTimer(time){
      counter = setInterval(timer, 1000);
